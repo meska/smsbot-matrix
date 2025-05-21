@@ -1,0 +1,14 @@
+From: XXXX
+From_TOA: D0 alphanumeric, unknown
+From_SMSC: 39000000000
+Sent: 25-05-06 17:31:10
+Received: 25-05-06 17:30:55
+Subject: GSM1
+Modem: GSM1
+IMSI: 00000000000000
+IMEI: 000000000000000
+Report: yes
+Alphabet: ISO
+Length: 27
+
+Usa XXXXXXX per proseguire
