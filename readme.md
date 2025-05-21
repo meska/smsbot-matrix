@@ -36,11 +36,11 @@ pip install -r requirements.txt
 3. Create a `.env` file with your Matrix credentials
 
 ```
-MATRIX_HOMESERVER="https://matrix.example.org"
-MATRIX_USER="@smsbot:example.org"
+MATRIX_SERVER="https://matrix.example.org"
+MATRIX_USERNAME="smsbot"
 MATRIX_PASSWORD="your_password"
-MATRIX_ACCESS_TOKEN="optional_access_token"
 MATRIX_ROOM_ID="!roomID:example.org"
+MATRIX_DOMAIN_SUFFIX="example.org"
 ```
 
 ## Configuration
@@ -65,7 +65,7 @@ This will send a test message to the configured Matrix room and delete it after 
 
 ### SMS Forwarding
 
-The `sms_to_discord.sh` script captures incoming SMS messages from Gammu and forwards them. Despite the name, it will be modified to use the Matrix API instead of Discord.
+The `sms_to_matrix.sh` script captures incoming SMS messages from Gammu and forwards them.
 
 ## File Structure
 

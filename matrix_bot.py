@@ -8,7 +8,7 @@ from dotenv import load_dotenv, find_dotenv
 
 
 class MatrixBot:
-    def __init__(self, server=None, username=None, password=None):
+    def __init__(self, server=None, username=None, password=None, domain_suffix=None):
         """
         Inizializza un'istanza del bot Matrix
         Se i parametri non sono specificati, vengono caricati dal file .env
@@ -17,6 +17,7 @@ class MatrixBot:
             server (str, optional): URL del server Matrix
             username (str, optional): Nome utente per il login
             password (str, optional): Password per il login
+            domain_suffix (str, optional): Suffisso del dominio per Matrix (es. mecomsrl.com)
         """
         # Carica le variabili d'ambiente dal file .env
         load_dotenv(find_dotenv())
@@ -25,6 +26,7 @@ class MatrixBot:
         self.server = server or os.environ.get("MATRIX_SERVER")
         self.username = username or os.environ.get("MATRIX_USERNAME")
         self.password = password or os.environ.get("MATRIX_PASSWORD")
+        self.domain_suffix = domain_suffix or os.environ.get("MATRIX_DOMAIN_SUFFIX", "matrix.org")
 
         if not self.server or not self.username or not self.password:
             raise ValueError("Server, username e password devono essere specificati o presenti nel file .env")
@@ -360,7 +362,7 @@ class MatrixBot:
 
             # Aggiorna il profilo con la nuova immagine
             # Assicuriamoci che l'ID utente sia formattato correttamente
-            user_id = self.username if self.username.startswith("@") else f"@{self.username}:mecomsrl.com"
+            user_id = self.username if self.username.startswith("@") else f"@{self.username}:{self.domain_suffix}"
             profile_url = f"{self.server}/_matrix/client/v3/profile/{user_id}/avatar_url"
             profile_data = {"avatar_url": content_uri}
 
